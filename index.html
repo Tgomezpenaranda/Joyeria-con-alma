@@ -5,33 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joyería con Alma</title>
   <style>
+    /* Colores principales */
+    :root {
+      --primary-color: #f59e0b;
+      --secondary-color: #fef3c7;
+      --accent-color: #9a3412;
+      --text-color: #333;
+      --background-color: #fff;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
+      color: var(--text-color);
+      background-color: var(--background-color);
       line-height: 1.6;
-      background-color: #f9f9f9;
     }
+
     .max-w-7xl {
       max-width: 90%;
       margin: 0 auto;
       padding: 1rem;
     }
+
+    /* Estilos del menú de navegación */
     nav {
-      background-color: #3b82f6;
-      color: white;
+      background-color: var(--primary-color);
+      color: var(--background-color);
       padding: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     nav a {
       font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
-      color: white;
+      color: var(--background-color);
     }
+
     nav ul {
       list-style: none;
       padding: 0;
@@ -39,49 +55,75 @@
       display: flex;
       gap: 1rem;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: white;
+      color: var(--background-color);
       font-weight: bold;
     }
+
     nav ul li a:hover {
       text-decoration: underline;
     }
+
+    /* Banner */
     .banner {
-      background-color: #2563eb;
-      color: white;
+      background: url('https://via.placeholder.com/1920x600/ffedc2/333?text=Joyería+con+Alma') no-repeat center center/cover;
+      color: var(--background-color);
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       margin-bottom: 1rem;
     }
+
     .banner h1 {
       font-size: 2.5rem;
       margin: 0;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
     }
+
+    .banner p {
+      font-size: 1.25rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Secciones */
     .section {
-      padding: 1rem;
+      padding: 2rem 1rem;
       margin-bottom: 1rem;
-      background-color: white;
+      background-color: var(--secondary-color);
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    .section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+
     .services ul {
       list-style: none;
       padding: 0;
     }
+
     .services li {
       margin-bottom: 1rem;
     }
+
     .services li span {
       font-weight: bold;
-      color: #2563eb;
+      color: var(--accent-color);
     }
+
+    /* Pie de página */
     footer {
-      background-color: #3b82f6;
-      color: white;
-      padding: 1rem;
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      padding: 1.5rem;
       text-align: center;
     }
+
     footer ul {
       list-style: none;
       padding: 0;
@@ -90,17 +132,14 @@
       justify-content: center;
       gap: 1rem;
     }
+
     footer ul li a {
-      color: white;
+      color: var(--background-color);
       text-decoration: none;
     }
+
     footer ul li a:hover {
       text-decoration: underline;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 0.5rem;
     }
 
     /* Responsiveness */
@@ -151,7 +190,7 @@
     <section id="about" class="section">
       <h2>Sobre Nosotros</h2>
       <p>Joyería con Alma nace de la pasión por el diseño artesanal. Creamos piezas únicas que representan emociones, conectando con los momentos más especiales de tu vida.</p>
-      <img src="https://via.placeholder.com/600x300" alt="Taller de Joyería" />
+      <img src="https://via.placeholder.com/600x400/eccba1/333?text=Taller+de+joyería" alt="Taller de Joyería" />
     </section>
 
     <!-- Sección de Servicios -->
@@ -193,3 +232,4 @@
   </div>
 </body>
 </html>
+
