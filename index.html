@@ -3,240 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joyería con Alma</title>
+  <title>Registro de Usuario</title>
   <style>
-    /* Colores principales */
-    :root {
-      --primary-color: #f59e0b; /* Dorado cálido */
-      --secondary-color: #fef3c7; /* Beige claro */
-      --accent-color: #b45309;   /* Marrón suave */
-      --text-color: #4b5563;     /* Gris oscuro */
-      --background-color: #fff;  /* Blanco */
-    }
-
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      color: #333;
       margin: 0;
       padding: 0;
-      color: var(--text-color);
-      background-color: var(--background-color);
-      line-height: 1.6;
-    }
-
-    .max-w-7xl {
-      max-width: 90%;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    /* Estilos del menú de navegación */
-    nav {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    nav a {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      color: var(--background-color);
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: var(--background-color);
-      font-weight: bold;
-    }
-
-    nav ul li a:hover {
-      color: var(--accent-color);
-    }
-
-    /* Banner */
-    .banner {
-      background: url('https://via.placeholder.com/1920x600/fdf2e9/333?text=Joyería+con+Alma') no-repeat center center/cover;
-      color: var(--background-color);
-      text-align: center;
-      padding: 3rem 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .banner-logo {
-      display: block;
-      max-width: 300px;
-      margin: 0 auto 1rem auto;
-    }
-
-    .banner h1 {
-      font-size: 2.5rem;
-      margin: 0;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .banner p {
-      font-size: 1.25rem;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Secciones */
-    .section {
-      padding: 2rem 1rem;
-      margin-bottom: 1rem;
-      background-color: var(--secondary-color);
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .section img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .services ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .services li {
-      margin-bottom: 1rem;
-    }
-
-    .services li span {
-      font-weight: bold;
-      color: var(--accent-color);
-    }
-
-    /* Pie de página */
-    footer {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      align-items: center;
+      height: 100vh;
     }
-
-    footer ul li a {
-      color: var(--background-color);
-      text-decoration: none;
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
     }
-
-    footer ul li a:hover {
-      color: var(--accent-color);
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
     }
-
-    /* Responsiveness */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .banner h1 {
-        font-size: 2rem;
-      }
+    label {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
     }
-    @media (max-width: 480px) {
-      .banner h1 {
-        font-size: 1.5rem;
-      }
-      nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #f59e0b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b45309;
+    }
+    p {
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="max-w-7xl">
-    <!-- Menú de navegación -->
-    <nav>
-      <a href="#">Joyería con Alma</a>
-      <ul>
-        <li><a href="#about">Sobre Nosotros</a></li>
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#reviews">Reseñas</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-    </nav>
+  <div class="container">
+    <h2>Registro de Usuario</h2>
+    <form id="registroForm">
+      <label for="nombres">Nombres</label>
+      <input type="text" id="nombres" name="nombres" required>
 
-    <!-- Banner -->
-    <div class="banner">
-      <img class="banner-logo" src="Logo joyeria con alma.jpg" alt="Logo Joyería con Alma" />
-      <h1>Joyería con Alma</h1>
-      <p>Diseños únicos que conectan con tus emociones</p>
-    </div>
+      <label for="apellidos">Apellidos</label>
+      <input type="text" id="apellidos" name="apellidos" required>
 
-    <!-- Sección Sobre la Empresa -->
-    <section id="about" class="section">
-      <h2>Sobre Nosotros</h2>
-      <p>Joyería con Alma nace de la pasión por el diseño artesanal. Creamos piezas únicas que representan emociones, conectando con los momentos más especiales de tu vida.</p>
-      <img src="https://via.placeholder.com/600x400/ffe4c4/333?text=Taller+de+joyería" alt="Taller de Joyería" />
-    </section>
+      <label for="email">Correo Electrónico</label>
+      <input type="email" id="email" name="email" required>
 
-    <!-- Sección de Servicios -->
-    <section id="services" class="section services">
-      <h2>Servicios</h2>
-      <ul>
-        <li>
-          <span>Diseño de joyas personalizadas:</span> Crea una pieza única desde $50 USD.
-        </li>
-        <li>
-          <span>Reparación de joyas:</span> Recupera el brillo de tus joyas desde $20 USD.
-        </li>
-        <li>
-          <span>Venta de joyas:</span> Descubre nuestra colección exclusiva desde $30 USD.
-        </li>
-      </ul>
-    </section>
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" name="contraseña" required>
 
-    <!-- Sección de Reseñas -->
-    <section id="reviews" class="section">
-      <h2>Reseñas de Clientes</h2>
-      <ul>
-        <li>"Excelente servicio y calidad. Mis joyas personalizadas son perfectas."</li>
-        <li>"Rápida reparación y atención profesional. 100% recomendado."</li>
-        <li>"La colección es hermosa. Cada pieza tiene su propia historia."</li>
-      </ul>
-    </section>
+      <label for="genero">Género</label>
+      <select id="genero" name="genero" required>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+      </select>
 
-    <!-- Pie de Página -->
-    <footer id="contact">
-      <h2>Redes Sociales</h2>
-      <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Twitter</a></li>
-      </ul>
-      <p>&copy; 2024 Joyería con Alma. Todos los derechos reservados.</p>
-    </footer>
+      <button type="submit">Registrar</button>
+    </form>
+    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
   </div>
+
+  <script>
+    const form = document.getElementById('registroForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nombres = document.getElementById('nombres').value;
+      const apellidos = document.getElementById('apellidos').value;
+      const email = document.getElementById('email').value;
+      const contraseña = document.getElementById('contraseña').value;
+      const genero = document.getElementById('genero').value;
+
+      const userData = {
+        nombres,
+        apellidos,
+        email,
+        contraseña,
+        genero
+      };
+
+      // Guardar datos en localStorage
+      localStorage.setItem('userData', JSON.stringify(userData));
+
+      // Redirigir a la página de inicio de sesión
+      window.location.href = 'login.html';
+    });
+  </script>
 </body>
 </html>
-
