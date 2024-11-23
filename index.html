@@ -1,84 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyería con Alma</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #fafafa;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        .button {
-            background-color: #ef4444;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        .hidden {
-            display: none;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 0.5rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        #introduccion, #mision-vision {
-            margin-bottom: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyería con Alma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .max-w-7xl {
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .button {
+      background-color: #ef4444;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+    .section {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #f3f4f6;
+      border-radius: 0.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #2563eb;
+    }
+    .hidden {
+      display: none;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="max-w-7xl">
+    <nav>
+      <a href="#">Joyería con Alma</a>
+      <div>
+        <span id="userName" class="user-name hidden"></span>
+        <button id="logoutButton" class="button hidden" onclick="logout()">Cerrar sesión</button>
+        <button id="loginButton" class="button" onclick="showLogin()">Iniciar sesión</button>
+        <button id="registerButton" class="button" onclick="showRegister()">Registrarse</button>
+      </div>
+    </nav>
 
-    <!-- Header con título y enlace de registro -->
-    <header>
-        <h1>Bienvenido a Joyería con Alma</h1>
-        <a href="#" onclick="showRegister()">¿Aún no tienes cuenta? Regístrate aquí</a>
-    </header>
+    <!-- Página de bienvenida -->
+    <div id="welcomePage" class="hidden">
+      <h2>Bienvenidos a Joyería con Alma</h2>
+      <p>Joyería con alma es un proyecto que nace de la pasión por la bisutería y el deseo de crear piezas únicas y emotivas que conecten con el alma. Nuestros diseños son inspirados en la naturaleza, el arte y la vida cotidiana, y cada pieza es cuidadosamente diseñada y hecha a mano para garantizar su calidad y originalidad.</p>
+      <div style="width: 4rem; height: 4rem; background-color: #e5e7eb; border: 2px dashed #d1d5db; border-radius: 0.5rem;"></div>
+    </div>
 
-    <div class="container">
-        <!-- Formulario de Registro -->
-        <div class="registro" id="registerForm">
-            <form id="registerFormContent">
-                <h2>Registro</h2>
-                <label>Nombre</label>
-                <input type="text" id="nombre" name="nombre" required>
+    <!-- Formulario de Registro -->
+    <div id="registerForm" class="form-container hidden">
+      <h2>Registro</h2>
+      <form id="registerFormContent">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-                <label>Apellido</label>
-                <input type="text" id="apellido" name="apellido" required>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" required>
 
-                <label>Correo</label>
-                <input type="email" id="correo" name="correo" required>
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" required>
 
-                <label>Contraseña</label>
-                <input type="password" id="passwordRegister" name="passwordRegister" required>
+        <label for="passwordRegister">Contraseña</label>
+        <input type="password" id="passwordRegister" name="passwordRegister" required>
 
-                <label>Género</label>
-                <select id="genero" name="genero" required>
-                    <option value="">Selecciona tu género</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">F
+        <label for="genero">Género</label>
+        <select id="genero" name="genero" required>
+          <option value="">Selecciona tu género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <button type="submit">Registrarse</button>
+        <p>¿Ya tienes una cuenta? <a href="#" onclick="showLogin()">Inicia sesión</a></p>
+      </form>
+    </div>
+
+    <!-- Formulario de Login -->
+    <div id="loginForm" class="form-container hidden">
+      <h2>Iniciar sesión</h2>
+      <form id="loginFormContent" onsubmit="loginUser(event)">
+        <label for="loginCorreo">Correo</label>
+        <input type="email" id="loginCorreo" name="loginCorreo" required>
+
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword" name="loginPassword" required>
+
+        <button type="submit">Iniciar sesión</button>
+        <p>¿No tienes una cuenta? <a href="#" onclick="showRegister()">Regístrate</a></p>
+      </form>
+    </div>
+
+    <!-- Misión -->
+    <section class="section">
+      <h2>Misión</h2>
+      <p>Crear joyas únicas y personalizadas que representen emociones y momentos especiales, brindando a nuestros clientes piezas de alta calidad que transmitan valores de autenticidad, creatividad y pasión.</p>
+    </section>
+
+    <!-- Visión -->
+    <section class="section">
+      <h2>Visión</h2>
+      <p>Ser reconocidos como un referente en joyería artesanal que combina diseño innovador con un profundo significado emocional, fomentando una conexión especial entre nuestras piezas y las personas que las eligen.</p>
+    </section>
+
+    <!-- Servicios -->
+    <section class="section">
+      <h2>Servicios</h2>
+      <ul>
+        <li>Diseño de joyas personalizadas</li>
+        <li>Reparación de joyas</li>
+        <li>Venta de joyas</li>
+      </ul>
+    </section>
+
+    <!-- Reseñas de clientes -->
+    <section class="section">
+      <h2>Reseñas de clientes</h2>
+      <ul>
+        <li>"Excelente servicio y calidad de productos"</li>
+        <li>"Me encantó el diseño de mi joya personalizada"</li>
+        <li>"La reparación de mi joya fue rápida y eficiente"</li>
+      </ul>
+    </section>
+
+    <!-- Redes sociales -->
+    <footer class="section">
+      <h2>Redes sociales</h2>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <script>
+    // Mostrar el formulario de registro
+    function showRegister() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('welcomePage').classList.add('hidden');
+      document.getElementById('registerForm').classList.remove('hidden');
+      document.getElementById('loginButton').classList.remove('hidden');
+      document.getElementById('logoutButton').classList.add('hidden');
+      document.getElementById('userName').classList.add('hidden');
+    }
+
+    // Mostrar el formulario de login
+    function showLogin() {
+      document.getElementById('registerForm').classList.add('hidden');
+      document.getElementById('welcomePage').classList.add('hidden');
+      document.getElementById('loginForm').classList.remove('hidden');
+    }
+
+    // Función para registrar al usuario
+    document.getElementById('registerFormContent').onsubmit = function(event) {
+      event.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const correo = document.getElementById("correo").value;
+      const password = document.getElementById("passwordRegister").value;
+      const genero = document.getElementById("genero").value;
+
+      // Guardar los datos en localStorage
+      const user = { nombre, apellido, correo, password, genero };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("Usuario registrado con éxito");
+      showLogin();
+    };
+
+    // Función para iniciar sesión
+    function loginUser(event) {
+      event.preventDefault();
+      const correo = document.getElementById
 
