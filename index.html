@@ -1,106 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login y Registro</title>
+    <title>Joyería con Alma</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+            background-color: #fafafa;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 1rem;
         }
-        h2 {
-            text-align: center;
-            color: #444;
-        }
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #6c5ce7;
+        .button {
+            background-color: #ef4444;
             color: white;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 0.25rem;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #5e54d2;
-        }
-        a {
-            color: #6c5ce7;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        h1, h2 {
+            color: #333;
         }
         .hidden {
             display: none;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <!-- Formulario de Registro -->
         <div class="registro" id="registerForm">
-            <form id="formRegister">
+            <form id="registerFormContent">
                 <h2>Registro</h2>
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
+                <label>Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
 
-                <div class="form-group">
-                    <label>Apellido</label>
-                    <input type="text" id="apellido" name="apellido" required>
-                </div>
+                <label>Apellido</label>
+                <input type="text" id="apellido" name="apellido" required>
 
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="email" id="correo" name="correo" required>
-                </div>
+                <label>Correo</label>
+                <input type="email" id="correo" name="correo" required>
 
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" id="passwordRegister" name="passwordRegister" required>
-                </div>
+                <label>Contraseña</label>
+                <input type="password" id="passwordRegister" name="passwordRegister" required>
 
-                <div class="form-group">
-                    <label>Género</label>
-                    <select id="genero" name="genero" required>
-                        <option value="">Selecciona tu género</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
+                <label>Género</label>
+                <select id="genero" name="genero" required>
+                    <option value="">Selecciona tu género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
 
                 <button type="submit">Registrarse</button>
                 <a href="#" onclick="showLogin()">¿Ya tienes una cuenta? Inicia Sesión</a>
@@ -109,21 +66,25 @@
 
         <!-- Formulario de Login -->
         <div class="login hidden" id="loginForm">
-            <form id="formLogin" onsubmit="login(event)">
-                <h2>Iniciar sesión</h2>
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="email" id="loginEmail" name="loginEmail" required>
-                </div>
+            <form id="loginFormContent" onsubmit="loginUser(event)">
+                <h2>Iniciar Sesión</h2>
+                <label>Correo</label>
+                <input type="email" id="loginCorreo" name="loginCorreo" required>
 
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" id="loginPassword" name="loginPassword" required>
-                </div>
+                <label>Contraseña</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
 
                 <button type="submit">Iniciar Sesión</button>
-                <a href="#" onclick="showRegister()">¿No tienes cuenta? Regístrate</a>
+                <a href="#" onclick="showRegister()">¿No tienes una cuenta? Regístrate</a>
             </form>
+        </div>
+
+        <!-- Página principal después de iniciar sesión -->
+        <div id="welcomePage" class="hidden">
+            <h1>Bienvenidos a Joyería con Alma</h1>
+            <p>Diseños exclusivos de joyas con alma. Cada pieza tiene una historia que contar.</p>
+            <p id="userWelcomeMessage"></p>
+            <button class="button" onclick="logout()">Cerrar sesión</button>
         </div>
     </div>
 
@@ -138,52 +99,66 @@
             document.getElementById("loginForm").classList.remove("hidden");
         }
 
-        function login(event) {
-            event.preventDefault(); // Evita el envío del formulario
-            const loginEmail = document.getElementById("loginEmail").value;
-            const loginPassword = document.getElementById("loginPassword").value;
+        // Función para registrar al usuario
+        document.getElementById('registerFormContent').onsubmit = function(event) {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const correo = document.getElementById("correo").value;
+            const password = document.getElementById("passwordRegister").value;
+            const genero = document.getElementById("genero").value;
 
-            const storedUser = JSON.parse(localStorage.getItem("user"));
+            // Guardar los datos en localStorage
+            const user = { nombre, apellido, correo, password, genero };
+            localStorage.setItem("user", JSON.stringify(user));
+            
+            alert("Usuario registrado con éxito");
+            showLogin(); // Mostrar el formulario de login
+        };
 
-            if (storedUser && storedUser.correo === loginEmail && storedUser.passwordRegister === loginPassword) {
-                alert("Inicio de sesión exitoso");
-                window.location.href = "home.html"; // Redirige a la página principal
+        // Función para iniciar sesión
+        function loginUser(event) {
+            event.preventDefault();
+            const correo = document.getElementById("loginCorreo").value;
+            const password = document.getElementById("loginPassword").value;
+
+            // Verificar los datos en el localStorage
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user && user.correo === correo && user.password === password) {
+                localStorage.setItem("loggedIn", true); // Marcar al usuario como logueado
+                showWelcomePage(user);
             } else {
                 alert("Correo o contraseña incorrectos");
             }
         }
 
-        // Registro de usuario
-        document.getElementById("formRegister").addEventListener("submit", function (event) {
-            event.preventDefault();
+        // Mostrar la página de bienvenida después de iniciar sesión
+        function showWelcomePage(user) {
+            document.getElementById("loginForm").classList.add("hidden");
+            document.getElementById("registerForm").classList.add("hidden");
+            document.getElementById("welcomePage").classList.remove("hidden");
+            document.getElementById("userWelcomeMessage").textContent = `Hola, ${user.nombre} ${user.apellido}!`;
+        }
 
-            const nombre = document.getElementById("nombre").value;
-            const apellido = document.getElementById("apellido").value;
-            const correo = document.getElementById("correo").value;
-            const passwordRegister = document.getElementById("passwordRegister").value;
-            const genero = document.getElementById("genero").value;
+        // Función de logout
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            document.getElementById("welcomePage").classList.add("hidden");
+            showLogin(); // Volver a mostrar el formulario de login
+        }
 
-            const user = {
-                nombre,
-                apellido,
-                correo,
-                passwordRegister,
-                genero
-            };
-
-            // Guardar usuario en el localStorage
-            localStorage.setItem("user", JSON.stringify(user));
-            alert("Usuario registrado exitosamente");
-            showLogin(); // Mostrar el formulario de login después del registro
-        });
-
-        // Mostrar el formulario de registro por defecto
-        document.getElementById("registerForm").classList.remove("hidden");
-        document.getElementById("loginForm").classList.add("hidden");
+        // Comprobar si el usuario ya está logueado al cargar la página
+        window.onload = function() {
+            const loggedIn = localStorage.getItem("loggedIn");
+            if (loggedIn) {
+                const user = JSON.parse(localStorage.getItem("user"));
+                showWelcomePage(user);
+            } else {
+                showLogin(); // Mostrar login si no está logueado
+            }
+        };
     </script>
 </body>
-
 </html>
-
 
 
