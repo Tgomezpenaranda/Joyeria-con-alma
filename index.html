@@ -10,9 +10,6 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-image: url('https://i.pinimg.com/736x/2c/8c/98/2c8c983b4ba946d7b239b2ef483efbc8.jpg');
-      background-size: cover;
-      background-position: center;
     }
     .max-w-7xl {
       max-width: 80%;
@@ -58,134 +55,44 @@
     a:hover {
       color: #2563eb;
     }
-    .hidden {
-      display: none;
-    }
-    .form-container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 1rem;
-      background-color: #fff;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    input, select, button {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 0.25rem;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    #welcomePage {
-      margin-top: 2rem;
-    }
-    .banner {
-      text-align: center;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      margin-bottom: 2rem;
-      border-radius: 0.5rem;
-    }
-    .footer-social-links {
-      text-align: center;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
   <div class="max-w-7xl">
     <nav>
+      <a href="#">Joyería con Alma</a>
       <div>
-        <a href="#">Inicio</a>
-        <a href="#sobreNosotros">Sobre Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#reseñas">Reseñas</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-      <div>
-        <span id="userName" class="user-name hidden"></span>
-        <button id="logoutButton" class="button hidden" onclick="logout()">Cerrar sesión</button>
-        <button id="loginButton" class="button" onclick="showLogin()">Iniciar sesión</button>
-        <button id="registerButton" class="button" onclick="showRegister()">Registrarse</button>
+        <span class="user-name">Usuario</span>
+        <button class="button">Cerrar sesión</button>
       </div>
     </nav>
 
-    <!-- Banner con nombre de la empresa -->
-    <div class="banner">
-      <h1>Bienvenidos a Joyería con Alma</h1>
-      <p>Creando joyas únicas con pasión y alma.</p>
-    </div>
-
-    <!-- Sección de sobre la empresa -->
-    <section id="sobreNosotros" class="section">
-      <h2>Sobre Nosotros</h2>
-      <p>En Joyería con Alma, nos dedicamos a crear piezas únicas que reflejan emociones y momentos especiales. Nuestros diseños están inspirados por la belleza de la naturaleza y la creatividad, elaborados a mano con los más altos estándares de calidad. Cada joya tiene una historia que contar.</p>
-      <img src="https://png.pngtree.com/thumb_back/fw800/background/20240913/pngtree-chic-womens-jewelry-collection-on-pink-background-elegant-women-s-displayed-image_16176829.jpg" alt="Joyería con Alma" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 0.5rem;">
+    <section class="section">
+      <h2>Bienvenidos a Joyería con Alma</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <div style="width: 4rem; height: 4rem; background-color: #e5e7eb; border: 2px dashed #d1d5db; border-radius: 0.5rem;"></div>
     </section>
 
-    <!-- Sección de servicios -->
-    <section id="servicios" class="section">
+    <section class="section">
       <h2>Servicios</h2>
       <ul>
-        <li><strong>Diseño de joyas personalizadas:</strong> Creamos piezas únicas según los deseos del cliente. Precios a partir de $100 USD.</li>
-        <li><strong>Reparación de joyas:</strong> Reparación de joyas con gran delicadeza y rapidez. Desde $20 USD dependiendo del daño.</li>
-        <li><strong>Venta de joyas:</strong> Venta de nuestras colecciones exclusivas. Precios desde $50 USD.</li>
+        <li>Diseño de joyas personalizadas</li>
+        <li>Reparación de joyas</li>
+        <li>Venta de joyas</li>
       </ul>
     </section>
 
-    <!-- Sección de reseñas de clientes -->
-    <section id="reseñas" class="section">
-      <h2>Reseñas de Clientes</h2>
+    <section class="section">
+      <h2>Reseñas de clientes</h2>
       <ul>
-        <li>"Excelente servicio y calidad de productos, muy recomendados."</li>
-        <li>"El diseño de mi joya personalizada fue impresionante, exactamente lo que quería."</li>
-        <li>"La reparación de mi anillo fue rápida y eficiente, ¡quedó como nuevo!"</li>
+        <li>"Excelente servicio y calidad de productos"</li>
+        <li>"Me encantó el diseño de mi joya personalizada"</li>
+        <li>"La reparación de mi joya fue rápida y eficiente"</li>
       </ul>
     </section>
 
-    <!-- Sección de formulario de inicio de sesión -->
-    <div id="loginForm" class="form-container hidden">
-      <h2>Iniciar sesión</h2>
-      <form id="loginFormContent">
-        <input type="email" id="loginCorreo" placeholder="Correo" required>
-        <input type="password" id="loginPassword" placeholder="Contraseña" required>
-        <button type="submit" class="button">Iniciar sesión</button>
-      </form>
-      <p>No tienes cuenta? <a href="javascript:void(0)" onclick="showRegister()">Registrarse</a></p>
-    </div>
-
-    <!-- Sección de formulario de registro -->
-    <div id="registerForm" class="form-container hidden">
-      <h2>Registrarse</h2>
-      <form id="registerFormContent">
-        <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="text" id="apellido" placeholder="Apellido" required>
-        <input type="email" id="correo" placeholder="Correo" required>
-        <input type="password" id="passwordRegister" placeholder="Contraseña" required>
-        <select id="genero" required>
-          <option value="">Seleccione un género</option>
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-        </select>
-        <button type="submit" class="button">Registrar</button>
-      </form>
-      <p>¿Ya tienes cuenta? <a href="javascript:void(0)" onclick="showLogin()">Iniciar sesión</a></p>
-    </div>
-
-    <!-- Página de bienvenida que se muestra cuando el usuario inicia sesión -->
-    <div id="welcomePage" class="hidden">
-      <h2>Bienvenido a Joyería con Alma</h2>
-      <p>Estamos felices de tenerte aquí.</p>
-    </div>
-
-    <!-- Pie de página con enlaces a redes sociales -->
-    <footer class="section footer-social-links">
-      <h2>Redes Sociales</h2>
+    <footer class="section">
+      <h2>Redes sociales</h2>
       <ul>
         <li><a href="#">Facebook</a></li>
         <li><a href="#">Instagram</a></li>
@@ -193,68 +100,5 @@
       </ul>
     </footer>
   </div>
-
-  <script>
-    // Función para mostrar el formulario de registro
-    function showRegister() {
-      document.getElementById('loginForm').classList.add('hidden');
-      document.getElementById('welcomePage').classList.add('hidden');
-      document.getElementById('registerForm').classList.remove('hidden');
-      document.getElementById('loginButton').classList.remove('hidden');
-      document.getElementById('registerButton').classList.add('hidden');
-    }
-
-    // Función para mostrar el formulario de login
-    function showLogin() {
-      document.getElementById('registerForm').classList.add('hidden');
-      document.getElementById('welcomePage').classList.add('hidden');
-      document.getElementById('loginForm').classList.remove('hidden');
-      document.getElementById('registerButton').classList.remove('hidden');
-      document.getElementById('loginButton').classList.add('hidden');
-      document.getElementById('logoutButton').classList.add('hidden');
-    }
-
-    // Función para registrar al usuario
-    document.getElementById("registerFormContent")?.addEventListener("submit", function(event) {
-      event.preventDefault();
-      const nombre = document.getElementById("nombre").value;
-      const apellido = document.getElementById("apellido").value;
-      const correo = document.getElementById("correo").value;
-      const password = document.getElementById("passwordRegister").value;
-      const genero = document.getElementById("genero").value;
-
-      // Guardar el usuario en localStorage
-      localStorage.setItem("user", JSON.stringify({ nombre, apellido, correo, password, genero }));
-      showLogin(); // Redirigir al login
-    });
-
-    // Función para iniciar sesión
-    document.getElementById("loginFormContent")?.addEventListener("submit", function(event) {
-      event.preventDefault();
-      const loginCorreo = document.getElementById("loginCorreo").value;
-      const loginPassword = document.getElementById("loginPassword").value;
-
-      // Verificar las credenciales
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user && user.correo === loginCorreo && user.password === loginPassword) {
-        // Usuario logueado con éxito
-        document.getElementById("welcomePage").classList.remove("hidden");
-        document.getElementById("loginForm").classList.add("hidden");
-        document.getElementById("registerButton").classList.add("hidden");
-        document.getElementById("loginButton").classList.add("hidden");
-        document.getElementById("userName").classList.remove("hidden");
-        document.getElementById("userName").innerText = `Bienvenido, ${user.nombre} ${user.apellido}`;
-        document.getElementById("logoutButton").classList.remove("hidden");
-      } else {
-        alert("Credenciales incorrectas");
-      }
-    });
-
-    // Función para cerrar sesión
-    function logout() {
-      localStorage.removeItem("user");
-      location.reload(); // Recargar la página para reiniciar el estado
-    }
-  </script>
 </body>
 </html>
