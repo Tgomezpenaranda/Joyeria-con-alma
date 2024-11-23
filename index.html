@@ -86,7 +86,7 @@
       <div>
         <span id="userName" class="user-name hidden"></span>
         <button id="logoutButton" class="button hidden" onclick="logout()">Cerrar sesión</button>
-        <button id="loginButton" class="button" onclick="showLogin()">Iniciar sesión</button>
+        <button id="loginButton" class="button hidden" onclick="showLogin()">Iniciar sesión</button>
         <button id="registerButton" class="button" onclick="showRegister()">Registrarse</button>
       </div>
     </nav>
@@ -194,6 +194,7 @@
       document.getElementById('loginButton').classList.remove('hidden');
       document.getElementById('logoutButton').classList.add('hidden');
       document.getElementById('userName').classList.add('hidden');
+      document.getElementById('registerButton').classList.add('hidden');
     }
 
     // Mostrar el formulario de login
@@ -201,6 +202,7 @@
       document.getElementById('registerForm').classList.add('hidden');
       document.getElementById('welcomePage').classList.add('hidden');
       document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('registerButton').classList.remove('hidden');
     }
 
     // Función para registrar al usuario
@@ -223,5 +225,31 @@
     // Función para iniciar sesión
     function loginUser(event) {
       event.preventDefault();
-      const correo = document.getElementById
+      const correo = document.getElementById("loginCorreo").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.correo === correo && user.password === password) {
+        document.getElementById('userName').classList.remove('hidden');
+        document.getElementById('userName').textContent = "Bienvenido, " + user.nombre;
+        document.getElementById('welcomePage').classList.remove('hidden');
+        document.getElementById('loginButton').classList.add('hidden');
+        document.getElementById('registerButton').classList.add('hidden');
+        document.getElementById('logoutButton').classList.remove('hidden');
+      } else {
+        alert("Correo o contraseña incorrectos");
+      }
+    }
+
+    // Función para cerrar sesión
+    function logout() {
+      document.getElementById('userName').classList.add('hidden');
+      document.getElementById('welcomePage').classList.add('hidden');
+      document.getElementById('loginButton').classList.remove('hidden');
+      document.getElementById('registerButton').classList.remove('hidden');
+      document.getElementById('logoutButton').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
 
