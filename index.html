@@ -31,9 +31,34 @@
         .hidden {
             display: none;
         }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #introduccion, #mision-vision {
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header con título y enlace de registro -->
+    <header>
+        <h1>Bienvenido a Joyería con Alma</h1>
+        <a href="#" onclick="showRegister()">¿Aún no tienes cuenta? Regístrate aquí</a>
+    </header>
+
     <div class="container">
         <!-- Formulario de Registro -->
         <div class="registro" id="registerForm">
@@ -55,110 +80,5 @@
                 <select id="genero" name="genero" required>
                     <option value="">Selecciona tu género</option>
                     <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                    <option value="otro">Otro</option>
-                </select>
-
-                <button type="submit">Registrarse</button>
-                <a href="#" onclick="showLogin()">¿Ya tienes una cuenta? Inicia Sesión</a>
-            </form>
-        </div>
-
-        <!-- Formulario de Login -->
-        <div class="login hidden" id="loginForm">
-            <form id="loginFormContent" onsubmit="loginUser(event)">
-                <h2>Iniciar Sesión</h2>
-                <label>Correo</label>
-                <input type="email" id="loginCorreo" name="loginCorreo" required>
-
-                <label>Contraseña</label>
-                <input type="password" id="loginPassword" name="loginPassword" required>
-
-                <button type="submit">Iniciar Sesión</button>
-                <a href="#" onclick="showRegister()">¿No tienes una cuenta? Regístrate</a>
-            </form>
-        </div>
-
-        <!-- Página principal después de iniciar sesión -->
-        <div id="welcomePage" class="hidden">
-            <h1>Bienvenidos a Joyería con Alma</h1>
-            <p>Diseños exclusivos de joyas con alma. Cada pieza tiene una historia que contar.</p>
-            <p id="userWelcomeMessage"></p>
-            <button class="button" onclick="logout()">Cerrar sesión</button>
-        </div>
-    </div>
-
-    <script>
-        function showRegister() {
-            document.getElementById("loginForm").classList.add("hidden");
-            document.getElementById("registerForm").classList.remove("hidden");
-        }
-
-        function showLogin() {
-            document.getElementById("registerForm").classList.add("hidden");
-            document.getElementById("loginForm").classList.remove("hidden");
-        }
-
-        // Función para registrar al usuario
-        document.getElementById('registerFormContent').onsubmit = function(event) {
-            event.preventDefault();
-            const nombre = document.getElementById("nombre").value;
-            const apellido = document.getElementById("apellido").value;
-            const correo = document.getElementById("correo").value;
-            const password = document.getElementById("passwordRegister").value;
-            const genero = document.getElementById("genero").value;
-
-            // Guardar los datos en localStorage
-            const user = { nombre, apellido, correo, password, genero };
-            localStorage.setItem("user", JSON.stringify(user));
-            
-            alert("Usuario registrado con éxito");
-            showLogin(); // Mostrar el formulario de login
-        };
-
-        // Función para iniciar sesión
-        function loginUser(event) {
-            event.preventDefault();
-            const correo = document.getElementById("loginCorreo").value;
-            const password = document.getElementById("loginPassword").value;
-
-            // Verificar los datos en el localStorage
-            const user = JSON.parse(localStorage.getItem("user"));
-            if (user && user.correo === correo && user.password === password) {
-                localStorage.setItem("loggedIn", true); // Marcar al usuario como logueado
-                showWelcomePage(user);
-            } else {
-                alert("Correo o contraseña incorrectos");
-            }
-        }
-
-        // Mostrar la página de bienvenida después de iniciar sesión
-        function showWelcomePage(user) {
-            document.getElementById("loginForm").classList.add("hidden");
-            document.getElementById("registerForm").classList.add("hidden");
-            document.getElementById("welcomePage").classList.remove("hidden");
-            document.getElementById("userWelcomeMessage").textContent = `Hola, ${user.nombre} ${user.apellido}!`;
-        }
-
-        // Función de logout
-        function logout() {
-            localStorage.removeItem("loggedIn");
-            document.getElementById("welcomePage").classList.add("hidden");
-            showLogin(); // Volver a mostrar el formulario de login
-        }
-
-        // Comprobar si el usuario ya está logueado al cargar la página
-        window.onload = function() {
-            const loggedIn = localStorage.getItem("loggedIn");
-            if (loggedIn) {
-                const user = JSON.parse(localStorage.getItem("user"));
-                showWelcomePage(user);
-            } else {
-                showLogin(); // Mostrar login si no está logueado
-            }
-        };
-    </script>
-</body>
-</html>
-
+                    <option value="femenino">F
 
