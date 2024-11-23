@@ -24,19 +24,11 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1rem;
-      border-radius: 0.5rem;
     }
     nav a {
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      color: white;
-      margin: 0 1rem;
-    }
-    nav a:hover {
-      color: #ef4444;
     }
     .button {
       background-color: #ef4444;
@@ -99,9 +91,6 @@
       margin-bottom: 2rem;
       border-radius: 0.5rem;
     }
-    .services-list li {
-      margin-bottom: 1rem;
-    }
     .footer-social-links {
       text-align: center;
       margin-top: 1rem;
@@ -110,10 +99,9 @@
 </head>
 <body>
   <div class="max-w-7xl">
-    <!-- Menú de navegación -->
     <nav>
       <div>
-        <a href="#inicio">Inicio</a>
+        <a href="#">Inicio</a>
         <a href="#sobreNosotros">Sobre Nosotros</a>
         <a href="#servicios">Servicios</a>
         <a href="#reseñas">Reseñas</a>
@@ -143,7 +131,7 @@
     <!-- Sección de servicios -->
     <section id="servicios" class="section">
       <h2>Servicios</h2>
-      <ul class="services-list">
+      <ul>
         <li><strong>Diseño de joyas personalizadas:</strong> Creamos piezas únicas según los deseos del cliente. Precios a partir de $100 USD.</li>
         <li><strong>Reparación de joyas:</strong> Reparación de joyas con gran delicadeza y rapidez. Desde $20 USD dependiendo del daño.</li>
         <li><strong>Venta de joyas:</strong> Venta de nuestras colecciones exclusivas. Precios desde $50 USD.</li>
@@ -160,8 +148,43 @@
       </ul>
     </section>
 
+    <!-- Sección de formulario de inicio de sesión -->
+    <div id="loginForm" class="form-container hidden">
+      <h2>Iniciar sesión</h2>
+      <form id="loginFormContent">
+        <input type="email" id="loginCorreo" placeholder="Correo" required>
+        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        <button type="submit" class="button">Iniciar sesión</button>
+      </form>
+      <p>No tienes cuenta? <a href="javascript:void(0)" onclick="showRegister()">Registrarse</a></p>
+    </div>
+
+    <!-- Sección de formulario de registro -->
+    <div id="registerForm" class="form-container hidden">
+      <h2>Registrarse</h2>
+      <form id="registerFormContent">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="text" id="apellido" placeholder="Apellido" required>
+        <input type="email" id="correo" placeholder="Correo" required>
+        <input type="password" id="passwordRegister" placeholder="Contraseña" required>
+        <select id="genero" required>
+          <option value="">Seleccione un género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+        </select>
+        <button type="submit" class="button">Registrar</button>
+      </form>
+      <p>¿Ya tienes cuenta? <a href="javascript:void(0)" onclick="showLogin()">Iniciar sesión</a></p>
+    </div>
+
+    <!-- Página de bienvenida que se muestra cuando el usuario inicia sesión -->
+    <div id="welcomePage" class="hidden">
+      <h2>Bienvenido a Joyería con Alma</h2>
+      <p>Estamos felices de tenerte aquí.</p>
+    </div>
+
     <!-- Pie de página con enlaces a redes sociales -->
-    <footer id="contacto" class="section footer-social-links">
+    <footer class="section footer-social-links">
       <h2>Redes Sociales</h2>
       <ul>
         <li><a href="#">Facebook</a></li>
@@ -171,34 +194,6 @@
     </footer>
   </div>
 
-  <!-- Formulario de Registro -->
-  <div id="registerForm" class="form-container hidden">
-    <h2>Registrarse</h2>
-    <form id="registerFormContent">
-      <input type="text" id="nombre" placeholder="Nombre" required>
-      <input type="text" id="apellido" placeholder="Apellido" required>
-      <input type="email" id="correo" placeholder="Correo electrónico" required>
-      <input type="password" id="passwordRegister" placeholder="Contraseña" required>
-      <select id="genero" required>
-        <option value="" disabled selected>Género</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-        <option value="Otro">Otro</option>
-      </select>
-      <button type="submit" class="button">Registrar</button>
-    </form>
-  </div>
-
-  <!-- Formulario de Login -->
-  <div id="loginForm" class="form-container hidden">
-    <h2>Iniciar sesión</h2>
-    <form id="loginFormContent" onsubmit="loginUser(event)">
-      <input type="email" id="loginCorreo" placeholder="Correo electrónico" required>
-      <input type="password" id="loginPassword" placeholder="Contraseña" required>
-      <button type="submit" class="button">Iniciar sesión</button>
-    </form>
-  </div>
-
   <script>
     // Función para mostrar el formulario de registro
     function showRegister() {
@@ -206,7 +201,6 @@
       document.getElementById('welcomePage').classList.add('hidden');
       document.getElementById('registerForm').classList.remove('hidden');
       document.getElementById('loginButton').classList.remove('hidden');
-      document.getElementById('logoutButton').classList.add('hidden');
       document.getElementById('registerButton').classList.add('hidden');
     }
 
@@ -235,7 +229,7 @@
     });
 
     // Función para iniciar sesión
-    function loginUser(event) {
+    document.getElementById("loginFormContent")?.addEventListener("submit", function(event) {
       event.preventDefault();
       const loginCorreo = document.getElementById("loginCorreo").value;
       const loginPassword = document.getElementById("loginPassword").value;
@@ -254,7 +248,7 @@
       } else {
         alert("Credenciales incorrectas");
       }
-    }
+    });
 
     // Función para cerrar sesión
     function logout() {
