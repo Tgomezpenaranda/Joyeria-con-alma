@@ -13,7 +13,7 @@
       background-color: #f9f9f9;
     }
     .max-w-7xl {
-      max-width: 80%;
+      max-width: 90%;
       margin: 0 auto;
       padding: 1rem;
     }
@@ -24,17 +24,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
     }
     nav ul {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
       display: flex;
       gap: 1rem;
     }
     nav ul li a {
-      color: white;
       text-decoration: none;
+      color: white;
       font-weight: bold;
     }
     nav ul li a:hover {
@@ -95,13 +102,37 @@
       height: auto;
       border-radius: 0.5rem;
     }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .banner h1 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .banner h1 {
+        font-size: 1.5rem;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="max-w-7xl">
     <!-- Menú de navegación -->
     <nav>
-      <a href="#" style="font-size: 1.5rem; font-weight: bold;">Joyería con Alma</a>
+      <a href="#">Joyería con Alma</a>
       <ul>
         <li><a href="#about">Sobre Nosotros</a></li>
         <li><a href="#services">Servicios</a></li>
