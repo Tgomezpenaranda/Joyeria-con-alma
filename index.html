@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      background-color: #f9f9f9;
     }
     .max-w-7xl {
       max-width: 80%;
@@ -17,99 +18,146 @@
       padding: 1rem;
     }
     nav {
+      background-color: #3b82f6;
+      color: white;
+      padding: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
     }
-    nav a {
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+    }
+    nav ul li a {
+      color: white;
       text-decoration: none;
-      font-size: 1.5rem;
       font-weight: bold;
     }
-    .button {
-      background-color: #ef4444;
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    .banner {
+      background-color: #2563eb;
       color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .banner h1 {
+      font-size: 2.5rem;
+      margin: 0;
     }
     .section {
       padding: 1rem;
       margin-bottom: 1rem;
-      background-color: #f3f4f6;
+      background-color: white;
       border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    ul {
+    .services ul {
       list-style: none;
       padding: 0;
     }
-    ul li {
-      margin-bottom: 0.5rem;
+    .services li {
+      margin-bottom: 1rem;
     }
-    a {
-      color: #3b82f6;
+    .services li span {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    footer {
+      background-color: #3b82f6;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    footer ul li a {
+      color: white;
       text-decoration: none;
     }
-    a:hover {
-      color: #2563eb;
+    footer ul li a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
     }
   </style>
 </head>
 <body>
   <div class="max-w-7xl">
+    <!-- Menú de navegación -->
     <nav>
-      <a href="#">Joyería con Alma</a>
-      <div>
-        <span class="user-name">Usuario</span>
-        <button class="button">Cerrar sesión</button>
-      </div>
+      <a href="#" style="font-size: 1.5rem; font-weight: bold;">Joyería con Alma</a>
+      <ul>
+        <li><a href="#about">Sobre Nosotros</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#reviews">Reseñas</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
     </nav>
 
-    <section class="section">
-      <h2>Bienvenidos a Joyería con Alma</h2>
-      <p>Joyería con alma es un proyecto que nace de la pasión por la bisutería y el deseo de crear piezas únicas y
-        emotivas que conecten con el alma. Nuestros diseños son inspirados en la naturaleza, el arte y la vida
-        cotidiana, y cada pieza es cuidadosamente diseñada y hecha a mano para garantizar su calidad y originalidad.</p>
-      <div style="width: 4rem; height: 4rem; background-color: #e5e7eb; border: 2px dashed #d1d5db; border-radius: 0.5rem;"></div>
+    <!-- Banner -->
+    <div class="banner">
+      <h1>Joyería con Alma</h1>
+      <p>Diseños únicos que conectan con tus emociones</p>
+    </div>
+
+    <!-- Sección Sobre la Empresa -->
+    <section id="about" class="section">
+      <h2>Sobre Nosotros</h2>
+      <p>Joyería con Alma nace de la pasión por el diseño artesanal. Creamos piezas únicas que representan emociones, conectando con los momentos más especiales de tu vida.</p>
+      <img src="https://via.placeholder.com/600x300" alt="Taller de Joyería" />
     </section>
 
-    <section class="section">
-      <h2>Misión</h2>
-      <p>Crear joyas únicas y personalizadas que representen emociones y momentos especiales, brindando a nuestros clientes piezas de alta calidad que transmitan valores de autenticidad, creatividad y pasión.</p>
-    </section>
-
-    <section class="section">
-      <h2>Visión</h2>
-      <p>Ser reconocidos como un referente en joyería artesanal que combina diseño innovador con un profundo significado emocional, fomentando una conexión especial entre nuestras piezas y las personas que las eligen.</p>
-    </section>
-
-    <section class="section">
+    <!-- Sección de Servicios -->
+    <section id="services" class="section services">
       <h2>Servicios</h2>
       <ul>
-        <li>Diseño de joyas personalizadas</li>
-        <li>Reparación de joyas</li>
-        <li>Venta de joyas</li>
+        <li>
+          <span>Diseño de joyas personalizadas:</span> Crea una pieza única desde $50 USD.
+        </li>
+        <li>
+          <span>Reparación de joyas:</span> Recupera el brillo de tus joyas desde $20 USD.
+        </li>
+        <li>
+          <span>Venta de joyas:</span> Descubre nuestra colección exclusiva desde $30 USD.
+        </li>
       </ul>
     </section>
 
-    <section class="section">
-      <h2>Reseñas de clientes</h2>
+    <!-- Sección de Reseñas -->
+    <section id="reviews" class="section">
+      <h2>Reseñas de Clientes</h2>
       <ul>
-        <li>"Excelente servicio y calidad de productos"</li>
-        <li>"Me encantó el diseño de mi joya personalizada"</li>
-        <li>"La reparación de mi joya fue rápida y eficiente"</li>
+        <li>"Excelente servicio y calidad. Mis joyas personalizadas son perfectas."</li>
+        <li>"Rápida reparación y atención profesional. 100% recomendado."</li>
+        <li>"La colección es hermosa. Cada pieza tiene su propia historia."</li>
       </ul>
     </section>
 
-    <footer class="section">
-      <h2>Redes sociales</h2>
+    <!-- Pie de Página -->
+    <footer id="contact">
+      <h2>Redes Sociales</h2>
       <ul>
         <li><a href="#">Facebook</a></li>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">Twitter</a></li>
       </ul>
+      <p>&copy; 2024 Joyería con Alma. Todos los derechos reservados.</p>
     </footer>
   </div>
 </body>
